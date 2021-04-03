@@ -29,10 +29,14 @@ li {
   padding: 10px 0px;
   display: flex;
   justify-content: space-evenly;
+  position: relative;
 }
 h3 {
   background-color: white;
 }
 .delete {
   cursor: pointer;
+  position: absolute;
+  right: 0;
+  font-size: 25px;
 }

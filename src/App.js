@@ -15,7 +15,7 @@ const defaultHeaderObj = {
 export default function App() {
   const [state, setState] = useState([]);
   const [inputVal, setInputVal] = useState("");
-  const dev = false;
+  const dev = true;
   const url = dev
     ? "http://localhost:5000/note"
     : "https://mini-note-it.herokuapp.com/note";
@@ -37,17 +37,17 @@ export default function App() {
   const getNotes = () => apiCall(`${url}`, "GET", {});
   const postNote = () => {
     if (inputVal.trim()) {
-      return (
-        apiCall(`${url}`, "POST", {
-          body: JSON.stringify({ note: inputVal }),
-        }) && setInputVal("")
-      );
+      apiCall(`${url}`, "POST", {
+        body: JSON.stringify({ note: inputVal }),
+      });
+      setInputVal("");
+      getNotes();
+      return;
     }
     alert("Hey, enter a nice note");
   };
   const deleteNote = (id) => {
     apiCall(`${url}/${id}`, "DELETE", {});
-    setState([]);
     getNotes();
   };
 
@@ -68,9 +68,6 @@ export default function App() {
             <li key={note._id}>
               <span>{note.note}</span>
               <span>
-                <span className="edit">
-                  <ion-icon name="create-outline" />
-                </span>
                 <span className="delete" onClick={() => deleteNote(note._id)}>
                   <ion-icon name="close-outline" />
                 </span>
@@ -81,3 +78,6 @@ export default function App() {
     </div>
   );
 }
+//                 <span className="edit">
+// <ion-icon name="create-outline" />
+// </span>
