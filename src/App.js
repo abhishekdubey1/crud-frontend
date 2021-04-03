@@ -15,7 +15,7 @@ const defaultHeaderObj = {
 export default function App() {
   const [state, setState] = useState([]);
   const [inputVal, setInputVal] = useState("");
-  const dev = true;
+  const dev = false;
   const url = dev
     ? "http://localhost:5000/note"
     : "https://mini-note-it.herokuapp.com/note";
