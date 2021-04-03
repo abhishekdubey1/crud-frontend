@@ -1,0 +1,38 @@
+body {
+  background-color: black;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.btn {
+  background-color: cyan;
+  color: black;
+  border: 0;
+  padding: 10px 15px;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+input {
+  margin-left: 20px;
+}
+ul {
+  list-style: none;
+}
+li {
+  background-color: white;
+  width: max-content;
+  min-width: 300px;
+  margin: 10px auto;
+  padding: 10px 0px;
+  display: flex;
+  justify-content: space-evenly;
+}
+h3 {
+  background-color: white;
+}
+.delete {
+  cursor: pointer;
+}
