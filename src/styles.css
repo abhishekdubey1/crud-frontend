@@ -4,6 +4,10 @@ body {
 .App {
   font-family: sans-serif;
   text-align: center;
+  z-index: 1;
+}
+.loading {
+  cursor: not-allowed !important;
 }
 .btn {
   background-color: cyan;
@@ -14,9 +18,11 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
   cursor: pointer;
+  z-index: 1;
 }
 input {
   margin-left: 20px;
+  z-index: 1;
 }
 ul {
   list-style: none;
@@ -39,4 +45,27 @@ h3 {
   position: absolute;
   right: 0;
   font-size: 25px;
+  z-index: 1;
+}
+#disabled {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.65);
+  bottom: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  left: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  -webkit-tap-highlight-color: transparent;
+  top: 0;
+  z-index: 100;
+  cursor: not-allowed !important;
 }

@@ -15,12 +15,14 @@ const defaultHeaderObj = {
 export default function App() {
   const [state, setState] = useState([]);
   const [inputVal, setInputVal] = useState("");
+  const [loading, setLoading] = useState("");
   const dev = false;
   const url = dev
     ? "http://localhost:5000/note"
     : "https://mini-note-it.herokuapp.com/note";
   async function apiCall(url = "", method, headerObj, data = {}) {
     try {
+      setLoading("loading");
       const response = await fetch(url, {
         method, // *GET, POST, PUT, DELETE, etc.
         ...defaultHeaderObj,
@@ -30,8 +32,10 @@ export default function App() {
       if (method === "GET") {
         setState(note);
       }
+      setLoading("");
     } catch (error) {
       console.log(`Error: ${error}`);
+      setLoading("");
     }
   }
   const getNotes = () => apiCall(`${url}`, "GET", {});
@@ -52,23 +56,29 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <button className="btn" onClick={getNotes}>
+    <div className={`App ${loading}`}>
+      <button className={`btn ${loading}`} onClick={getNotes}>
         Load Notes
       </button>
       <input
         type="text"
         onChange={(e) => setInputVal(e.target.value)}
         value={inputVal}
+        disabled={loading}
       />
-      <button onClick={postNote}>send</button>
+      <button onClick={postNote} className={` ${loading}`}>
+        send
+      </button>
       <ul>
         {state &&
           state.map((note) => (
             <li key={note._id}>
               <span>{note.note}</span>
               <span>
-                <span className="delete" onClick={() => deleteNote(note._id)}>
+                <span
+                  className={`delete ${loading}`}
+                  onClick={() => deleteNote(note._id)}
+                >
                   <ion-icon name="close-outline" />
                 </span>
               </span>
